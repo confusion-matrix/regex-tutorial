@@ -21,14 +21,16 @@ Regular expressions are a way to match strings using a set of character combinat
 The components that are used to build a regular expression include:
 * Single Characters: These are characters with no special signigicance and are used to match characters in the target string.
 
-* Wild Card: The . character mathces any single character.
+* Wild Card: The . character matches any single character.
 
 * Bracket Expressions: A bracket expression represents a character set via a list of characters enclosed by the square brackets. Within the brackets we specfiy what characters we are trying to match. Further we can add the ^ character which mean NOT. Within the brackets we typically add escape characters that are discussed later. Bracket expressions are the foundation of patter matching using regex.
 
 ### Anchors
-Anchors can be used to match the position of a target string rather than the characters in it. For example applying ^a to "abc" matches a, while $c mathces c.
+Anchors can be used to match the position of a target string rather than the characters in it.
+<br />For example:
+<mark>/^</mark>#?([a-f0-9]{6}|[a-f0-9]{3})<mark>$/</mark>
 
-
+These are especially useful for characters at the beginning and end of the target string.
 
 ### Quantifiers
 Regular expressions use quantifiers to match for a certain amount of times a character appears in a string.
@@ -44,6 +46,9 @@ These include:
 
 * ({m, n}): Matches when characters are between the given values.
 
+<br />Here's an example:
+<br />/^#?([a-f0-9]<mark>{6}</mark>|[a-f0-9]<mark>{3}</mark>)$/
+
 ### Grouping Constructs
 Grouping constructs can be used to capture the substrings of an input string. And can be used to do the following:
 * Match subexpressions that is repeated in the input string.
@@ -54,23 +59,24 @@ Grouping constructs can be used to capture the substrings of an input string. An
 
 ### Bracket Expressions
 Bracket expressions tell us when a character class or quatifier statment begins. 
-For example:
-/?([a-g0-3])$/
-
+<br />For example:
+<br />/^#?<mark>([a-f0-9]{6}|[a-f0-9]{3})</mark>$/
 
 ### Character Classes
 Character classes can be used to match specefic characters in the target string. A simple example includes [a-z] which matches any lower case letters, on the other hand we have [0-9] which matches any number. We can then combine these to match more specefic values such as [i-k5-7]. Character classes are simple but provide a lot of use cases.
+<br />In our example:
+<br />/^#?(<mark>[a-f0-9]</mark>{6}|<mark>[a-f0-9]</mark>{3})$/
 
 ### The OR Operator
 The OR operator in a regular expression is similar to the one found in JS. We can match for two different patterns and will return the one that can be applied.
 
-The OR operator is | and here is an example:
-([a-c0-9]{1}|[a-c0-9])
+<br />The OR operator is | and here is an example:
+<br />/^#?([a-f0-9]{6}<mark>|</mark>[a-f0-9]{3})$/
 
 ### Flags
 Flags add more options such as global searching and case insensitive searching. These flags can be used seperately or together in any order.
 
-Some examples include:
+<br />Some examples include:
 * g - Global search.
 
 * i - Case insensitive search
@@ -103,7 +109,6 @@ In this section we will cover the different escape characters that can be used t
 \n - Matches a line feed
 
 ## Author
-
 Carlos Hernandez, is a CS graduate seeking new opputunites in the world of web dev.
 
 GitHub: https://github.com/confusion-matrix
